@@ -27,6 +27,7 @@ public class AddressBook {
         personsList.add(person);
     }
 
+    // search by first name
     public ArrayList<Person> searchByFirstName(String firstName) {
         ArrayList<Person> retList = new ArrayList<Person>();
         for (Person person : personsList) {
@@ -39,6 +40,7 @@ public class AddressBook {
 
     }
 
+    //serach by last name
     public ArrayList<Person> searchByLastName(String lastName) {
         ArrayList<Person> retList = new ArrayList<Person>();
         for (Person person : personsList) {
@@ -50,6 +52,7 @@ public class AddressBook {
 
     }
 
+    //search by address
     public ArrayList<Person> searchByAddress(String address) {
 
         ArrayList<Person> retList = new ArrayList<Person>();
@@ -61,6 +64,7 @@ public class AddressBook {
         return retList;
     }
 
+    //search by phone number
     public ArrayList<Person> searchByPhoneNumber(String phoneNumber) {
 
         ArrayList<Person> retList = new ArrayList<Person>();
@@ -72,6 +76,7 @@ public class AddressBook {
         return retList;
     }
 
+    //search by email
     public ArrayList<Person> searchByEmail(String email) {
 
         ArrayList<Person> retList = new ArrayList<Person>();
@@ -83,6 +88,7 @@ public class AddressBook {
         return retList;
     }
 
+    //search any string
     public ArrayList<Person> searchAll(String str) {
 
         ArrayList<Person> retList = new ArrayList<Person>();

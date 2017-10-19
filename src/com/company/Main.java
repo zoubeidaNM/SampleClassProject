@@ -13,68 +13,41 @@ public class Main {
         //instantiate an AddressBook object
         AddressBook addressBook = new AddressBook();
 
-
-        File file = new File("/home/student/IdeaProjects/SampleClassProject/src/com/company/AddressBook.txt");
-
-
+        // answer from the user
         String answer = "";
 
-        Scanner fileScanner;
         Scanner keyboard = new Scanner(System.in);
 
-        try {
-            fileScanner = new Scanner(file);
-            int counter = 0;
+        do {
 
+            // create a person
+            Person newPerson = new Person();
+
+            System.out.print("Enter person's first name: ");
+            newPerson.setFirstName(keyboard.nextLine());
+            System.out.print("Enter person's last name: ");
+            newPerson.setLastName(keyboard.nextLine());
+            System.out.print("Enter person's address: ");
+            newPerson.setAddress(keyboard.nextLine());
+            System.out.print("Enter person's phone number: ");
+            newPerson.setPhoneNumber(keyboard.nextLine());
+            System.out.print("Enter person's email: ");
+            newPerson.setEmail(keyboard.nextLine());
+
+            // add the person to the address book
+            addressBook.add(newPerson);
+
+            // ask the person if he want to continue
+            System.out.print("Do you to continue (Y/N)?");
+            // make sure that the user answer is valid
             do {
-
-                // create a person
-                Person newPerson = new Person();
-
-                //System.out.print("Enter person's first name: ");
-                //newPerson.setFirstName(keyboard.nextLine());
-                //System.out.print("Enter person's last name: ");
-                //newPerson.setLastName(keyboard.nextLine());
-                //System.out.print("Enter person's address: ");
-                //newPerson.setAddress(keyboard.nextLine());
-                //System.out.print("Enter person's phone number: ");
-                //newPerson.setPhoneNumber(keyboard.nextLine());
-                //System.out.print("Enter person's email: ");
-                //newPerson.setEmail(keyboard.nextLine());
-
-                newPerson.setFirstName(fileScanner.nextLine());
-                //System.out.print("Enter person's last name: ");
-                newPerson.setLastName(fileScanner.nextLine());
-                //System.out.print("Enter person's address: ");
-                newPerson.setAddress(fileScanner.nextLine());
-                //System.out.print("Enter person's phone number: ");
-                newPerson.setPhoneNumber(fileScanner.nextLine());
-                //System.out.print("Enter person's email: ");
-                newPerson.setEmail(fileScanner.nextLine());
-
-                counter++;
-                System.out.println("Read person record number " + counter);
-
-                // add the person to the address book
-                addressBook.add(newPerson);
-
-                // ask the person if he want to continue
-                System.out.print("Do you to continue (Y/N)?");
-                // make sure that the user answer is valid
-                do {
-                    // get the answer from the user
-                    answer = keyboard.next();
-                    keyboard.nextLine();
-                } while (!checkIfAnswerValid(answer));
+                // get the answer from the user
+                answer = keyboard.next();
+                keyboard.nextLine();
+            } while (!checkIfAnswerValid(answer));
 
 
-            } while (answer.equalsIgnoreCase("y") && (fileScanner.hasNextLine()));
-
-            fileScanner.close();
-
-        } catch (Exception ex) {
-            System.out.println("file AddressBook.txt not found");
-        }
+        } while (answer.equalsIgnoreCase("y"));
 
 
         // print the person's records stored in the personDirectory list
@@ -85,7 +58,7 @@ public class Main {
             System.out.println(person.toString());
         }
 
-        //search the lis by first name, last name, address, email, phoneNumber
+        //search the lis by first name, last name, address, email, phoneNumber or any string
         System.out.println("Do you want to search the address book (Y/N)");
         answer = keyboard.next();
         keyboard.nextLine();
@@ -99,6 +72,7 @@ public class Main {
                 answer = keyboard.next();
                 keyboard.nextLine();
 
+                // serach by first name
                 if (answer.equalsIgnoreCase("f")) {
                     ArrayList<Person> personList = new ArrayList<Person>();
                     System.out.println("Enter first name to be searched: ");
@@ -116,7 +90,9 @@ public class Main {
 
                     }
 
-                } else if (answer.equalsIgnoreCase("l")) {
+                }
+                // search by last name
+                else if (answer.equalsIgnoreCase("l")) {
                     ArrayList<Person> personList = new ArrayList<Person>();
                     System.out.println("Enter last name to be searched: ");
                     String lastName = keyboard.nextLine();
@@ -133,7 +109,9 @@ public class Main {
 
                     }
 
-                } else if (answer.equalsIgnoreCase("a")) {
+                }
+                // search by address
+                else if (answer.equalsIgnoreCase("a")) {
                     ArrayList<Person> personList = new ArrayList<Person>();
                     System.out.println("Enter address to be searched: ");
                     String address = keyboard.nextLine();
@@ -150,7 +128,9 @@ public class Main {
 
                     }
 
-                } else if (answer.equalsIgnoreCase("p")) {
+                }
+                //search by phone number
+                else if (answer.equalsIgnoreCase("p")) {
                     ArrayList<Person> personList = new ArrayList<Person>();
                     System.out.println("Enter phone number to be searched: ");
                     String phoneNumber = keyboard.nextLine();
@@ -167,7 +147,9 @@ public class Main {
 
                     }
 
-                } else if (answer.equalsIgnoreCase("e")) {
+                }
+                // search by email
+                else if (answer.equalsIgnoreCase("e")) {
                     ArrayList<Person> personList = new ArrayList<Person>();
                     System.out.println("Enter email address to be searched: ");
                     String email = keyboard.nextLine();
@@ -184,7 +166,9 @@ public class Main {
 
                     }
 
-                } else if (answer.equalsIgnoreCase("s")) {
+                }
+                //search any string
+                else if (answer.equalsIgnoreCase("s")) {
                     ArrayList<Person> personList = new ArrayList<Person>();
                     System.out.println("Enter string to be searched: ");
                     String str = keyboard.nextLine();
